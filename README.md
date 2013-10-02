@@ -1,5 +1,3 @@
-Welcome to CSE 201.
-
 Run the following commands once to set your name and email.
 (Use your real name so I can recognize you more easily.)
 
