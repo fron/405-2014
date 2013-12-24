@@ -1,0 +1,111 @@
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Screen Constructor</title>
+  <style>
+      #login-screen, #menu-screen, #gameplay-screen {
+          display: none
+      }
+  </style>
+
+</head>
+
+<body>
+
+    <div id="loading-screen">
+        Loading ...
+    </div>
+
+    <div id="login-screen">
+        Username: <input id="login-username-box" type="text" size="20" /> <br>
+        Password: <input id="login-password-box" type="password" size="20" /> <br>
+        <button id="login-submit-btn">Login</button>
+    </div>
+
+    <div id="menu-screen">
+        <p>This is the menu screen. 
+        You can logout from here, or
+        you can play a game.
+        </p>
+        <button id="menu-logout-btn">Logout</button>
+        <button id="menu-gamePlay-btn">Play Game</button>
+    </div>
+    
+     <div id="gamePlay-screen">
+        <p>This is the play game screen.</p>
+        <button id="gamePlay-exit-btn">Exit</button>
+     </div>
+
+    <script>
+        // Create one global object to hold all application data and logic.
+        var app = { 
+            screens: {},   // application screens
+            Screen: null   // screen constructor
+        };
+
+        // *** START the definition of the Screen CONSTRUCTOR.
+        app.Screen = function(name) {
+        this.name = name;
+        };
+
+        // Define a "static" variable to refer to the currently active screen.
+        app.Screen.currentScreen = null;
+
+        // Define a function that Screen instances inherit.
+        app.Screen.prototype.getDiv = function() {
+            return document.getElementById(this.name + '-screen');
+        };
+
+        // Define another function that Screen instances inherit.
+		app.Screen.prototype.show = function() {
+            if (app.Screen.currentScreen) app.Screen.currentScreen.hide();  // function hide included
+            this.getDiv().style.display = 'block';
+            app.Screen.currentScreen = this;
+            };
+	
+	    //Function hide, when called sets the display attribute of the screen div to none. 
+		app.Screen.prototype.hide = function() {
+		    if (app.Screen.currentScreen) app.Screen.currentScreen.getDiv().style.display = 'none';
+	    }
+		
+        // *** END the definition of the Screen CONSTRUCTOR 
+
+        // Create the screen instances.
+        app.screens.loading = new app.Screen('loading');
+        app.screens.login = new app.Screen('login');
+        app.screens.menu = new app.Screen('menu');
+		app.screens.gamePlay = new app.Screen('gamePlay');
+ 
+        // Initialize the currentScreen variable.
+        app.Screen.currentScreen = app.screens.loading;
+
+        // Set a click event handler for the login button in the login screen.
+        document.getElementById('login-submit-btn').onclick = function() {
+            app.screens.loading.show();
+            setTimeout(function() { app.screens.menu.show(); }, 2000);
+        }
+
+        // Set a click event handler for the gamePlay button in the menu screen.
+        document.getElementById('menu-gamePlay-btn').onclick = function() {
+            app.screens.loading.show();
+            setTimeout(function() { app.screens.gamePlay.show(); }, 2000);
+        }
+
+
+        // Set a click event handler for the logout button in the menu screen.
+        document.getElementById('menu-logout-btn').onclick = function() {
+            app.screens.login.show();
+        };
+
+          // Set a click event handler for the exit button in the menu gamePlay.
+        document.getElementById('gamePlay-exit-btn').onclick = function() {
+            app.screens.menu.show();
+        };
+
+        // Use a timeout to simulate loading application data.
+        setTimeout(function() { app.screens.login.show() }, 2000);
+    </script>
+</body>
+
+</html>
