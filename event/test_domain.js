@@ -1,4 +1,4 @@
-// program main.js events assignment
+// program test_domain.js to artificially create an error to test main.js
 
 var http = require('http');
 var domain = require('domain');
@@ -12,21 +12,12 @@ function replyError(res) {
   }
 };
 
-function replyNotFound(res) {
-  try {
-    res.writeHead(404);
-    res.end('Not found.');
-  } catch (err) {
-    console.error('Error sending response with code 404.');
-  }
-};
-
 function handleRequest(req, res) {
   console.log('Handling request for ' + req.url);
   if (req.url === '/') {
-   res.end('hello');
+    res.end('hello');
   } else {
-    replyNotFound(res);
+        throw new Error("I'm bad");
   } 
 }
 
