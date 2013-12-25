@@ -1,8 +1,7 @@
 // In Node.js, the process object has global scope.
 
 console.log(process !== undefined); // true
-
-//  The process object is useful for accessing environmental variables. 
-
-console.log(process.env.LOGNAME);
-
+console.log(process.env.x);
+console.log(process.env.y);
+console.log(process.env.z);
+ 
