@@ -1,3 +1,6 @@
+<!-- ajax assignment app.html pgm
+
+
 <!DOCTYPE html>
 
 <!-- Initial page  -->
@@ -25,7 +28,8 @@
       </div>    
 
       <script type="text/javascript"> 
-	      (function() {                // anonymous function
+	      
+		  (function() {                // anonymous function
               var httpRequest;
               document.getElementById("ajaxButton").onclick = function() { makeRequest('message.js'); };
 
@@ -44,21 +48,22 @@
                   alert('Giving up :( Cannot create an XMLHTTP instance');
                   return false;
               }
-          httpRequest.onreadystatechange = alertContents;
-          httpRequest.open('GET', url);
-          httpRequest.send();
-          }
-
-          function alertContents() {
-              if (httpRequest.readyState === 4) {
-                  if (httpRequest.status === 200) {
-                      alert(httpRequest.responseText);
-                  } else {
-                        alert('There was a problem with the request.');
-                    }
-                  }
+          
+		      httpRequest.onreadystatechange = alertContents;
+              httpRequest.open('GET', url);
+              httpRequest.send();
               }
-         })();
+
+              function alertContents() {
+                  if (httpRequest.readyState === 4) {
+                      if (httpRequest.status === 200) {
+                          alert(httpRequest.responseText);
+                      } else {
+                           alert('There was a problem with the request.');
+                        }
+                      }
+                  }
+          })();
     </script>
       
    </body>
