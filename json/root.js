@@ -10,8 +10,8 @@ exports.handle = function(req, res) {
 
 exports.init = function(cb) {
     require('fs').readFile('app.html', function(err, data) {
-	    if (err) throw err;
-	    body = data;
-	    cb();
-	});
+        if (err) throw err;
+        body = data;
+        cb();
+    });
 }

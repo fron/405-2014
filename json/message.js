@@ -9,8 +9,8 @@ var body = new Buffer(responseString, 'utf-8');
 
 exports.handle = function(req, res) {
     res.writeHead(200, {
-	    'Content-Type': 'application/json',
-		'Content-length':body.length
-	});
+        'Content-Type': 'application/json',
+        'Content-length':body.length
+    });
     res.end(body);
 };
