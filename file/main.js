@@ -25,13 +25,13 @@ function handleRequest(req, res) {
     switch (true) {
         case (req.url === '/image.png'):
             image.handle(req, res);
-		    break;
-	    case (req.url === '/'):
-	        root.handle(req, res);
-		    break; 
+            break;
+        case (req.url === '/'):
+             root.handle(req, res);
+             break; 
         default:
             replyNotFound(res);
-		    break
+            break
     }
 }
 
@@ -39,7 +39,7 @@ var server = http.createServer();
 
 server.on('request', function(req, res) {
     var d = domain.create(); 
-	d.on('error', function(err) {
+        d.on('error', function(err) {
         console.error(req.url, err.message);
         replyError(res);
     });
@@ -51,15 +51,15 @@ var ok2 = false;
 
 function f(cb) {
     if(ok1 && ok2){
-	    server.listen(5000);
+        server.listen(5000);
     }
-	cb();
+        cb();
 }  
 
 function callback2() {
     image.init(function(){
         ok2 = true;
-		f(callback2);
+        f(callback2);
     });
 }
 
@@ -67,7 +67,7 @@ function callback2() {
 function callback1() {
     root.init(function(){
         ok1 = true;
-		f(callback1);
+        f(callback1);
     });
 }
 
