@@ -9,12 +9,17 @@ function isPrime(n){
         if (n%i==0) 
             return false;   
     }
-    console.log(n);
     return true;
 }
 
+function printPrime(n){
+    console.log(n);
+}
+
 while (numberOfPrimesPrinted<100){
-    if (isPrime(candidatePrime))
+    if (isPrime(candidatePrime)){
+        printPrime(candidatePrime); 
         ++numberOfPrimesPrinted;
+    }
     ++candidatePrime;
 }
