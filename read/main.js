@@ -45,19 +45,23 @@ var ok2 = false;
 
 server.on('request', function(req, res) {
     var d = domain.create();
-    d.on('error', function(err) {console.error(req.url, err.message); replyError(res); });
-    d.run(function() { handleRequest(req, res); });
+    d.on('error', function(err) {
+        console.error(req.url, err.message); replyError(res); 
+    });
+    d.run(function() {
+        handleRequest(req, res);
+    });
 });
 
 function f(cb) {
-    if(ok1 && ok2){
+    if(ok1 && ok2) {
         server.listen(5000);
     }
     cb();
 }  
 
 function callback2() {
-    image.init(function(){
+    image.init(function() {
         ok2 = true;
         f(callback2);
     });
@@ -65,7 +69,7 @@ function callback2() {
 
 
 function callback1() {
-    root.init(function(){
+    root.init(function() {
         ok1 = true;
         f(callback1);
     });

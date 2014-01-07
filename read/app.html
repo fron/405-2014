@@ -1,5 +1,4 @@
-<!-- json assignment app.html pgm
-
+<!-- read assignment app.html pgm -->
 
 <!DOCTYPE html>
 
@@ -29,7 +28,7 @@
 
         <script type="text/javascript"> 
 	    
-	        (function() {                // anonymous function
+            (function() {                
                 var httpRequest;
                 document.getElementById("ajaxButton").onclick = function() { 
                     makeRequest('message.js'); 
@@ -40,20 +39,24 @@
                         httpRequest = new XMLHttpRequest();
                     } 
                     else if (window.ActiveXObject) { // IE
-                          try {httpRequest = new ActiveXObject("Msxml2.XMLHTTP");}  
-                          catch (e) {try {httpRequest = new ActiveXObject("Microsoft.XMLHTTP");} 
-                          catch (e) {}
+                        try {
+                            httpRequest = new ActiveXObject("Msxml2.XMLHTTP");
+                        }  
+                        catch (e) {
+                            try {
+                                httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
+                            } 
+                            catch (e) {}
+                        }
                     }
-                }
-
-                if (!httpRequest) {
-                    alert('Giving up :( Cannot create an XMLHTTP instance');
-                    return false;
-                }
+                    if (!httpRequest) {
+                        alert('Giving up :( Cannot create an XMLHTTP instance');
+                        return false;
+                    }
           
-                httpRequest.onreadystatechange = alertContents;
-                httpRequest.open('GET', url + '?x=' + Math.random());
-                httpRequest.send();
+                    httpRequest.onreadystatechange = alertContents;
+                    httpRequest.open('GET', url + '?x=' + Math.random());
+                    httpRequest.send();
                 }   
 
                 function alertContents() {
@@ -69,8 +72,8 @@
                         }
                     }
                 }
-            })();
-    </script>
+           })();
+        </script>
       
    </body>
 </html>
