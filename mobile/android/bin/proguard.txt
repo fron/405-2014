@@ -1,0 +1,3 @@
+# view AndroidManifest.xml #generated:7
+-keep class cse405.gift.MainActivity { <init>(...); }
+
