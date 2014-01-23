@@ -39,7 +39,7 @@ exports.extractData = function(req, maxBytes, cb) {
     if (typeof(data) === 'object') {
       cb(data);
     } else {
-      console.log('WARNING: body is cwnot an object for message body = ' + dataString);
+      console.log('WARNING: body is not an object for message body = ' + dataString);
       req.socket.destroy();
     }
   });

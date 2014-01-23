@@ -2,10 +2,10 @@ var http             = require('http');
 var domain           = require('domain');
 var client           = require('./client');
 var get_doc          = require('./get_doc');
+var get_docG          = require('./get_docG');
 var buy_gem          = require('./buy_gem');
 var consume_gem      = require('./consume_gem');
-var get_doc_target    = require('./get_doc_target')
-var discount_gem    = require('./discount_gem')
+var message          = require('./gift');
 var replyNotFound    = require('./response').replyNotFound;
 var replyError       = require('./response').replyError;
 
@@ -15,16 +15,14 @@ function handleRequest(req, res) {
     client.handle(req, res);
   } else if (req.url === '/get-doc') {
     get_doc.handle(req, res);
+  } else if (req.url === '/get-docG') {
+    get_docG.handle(req, res);
   } else if (req.url === '/buy-gem') {
     buy_gem.handle(req, res);
   } else if (req.url === '/consume-gem') {
     consume_gem.handle(req, res);
-  } else if (req.url === '/check-sender-gem') {
-    check_sender_gem.handle(req, res);
-  } else if (req.url === '/get-doc-target') {
-    get_doc_target.handle(req, res);
-  } else if (req.url === '/discount-gem') {
-    discount_gem.handle(req, res);
+  } else if (req.url === '/gift') {
+    message.handle(req, res);
   } else {
     replyNotFound(res);
   }
@@ -36,6 +34,8 @@ server.on('request', function(req, res) {
   var d = domain.create();
   d.on('error', function(err) {
     console.error(req.url, err.message);
+    console.log(req);
+    console.log(res);
     replyError(res);
   });
   d.run(function() { handleRequest(req, res); });

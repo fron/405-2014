@@ -50,7 +50,8 @@ function send(options, reqData, cb) {
 // cb = function(err, doc)
 // If not found, doc === null
 exports.getDoc = function(_id, cb) {
- var options = {
+  
+  var options = {
     hostname: 'localhost',
     auth: 'admin:1234',
     port: 5984,
@@ -61,7 +62,7 @@ exports.getDoc = function(_id, cb) {
     if (err) {
       cb(err);
     } else if (result.error) {
-      if (result.error === 'not_found') {
+    if (result.error === 'not_found') {
         cb(null, null);
       } else {
         cb(new Error(result.error));
