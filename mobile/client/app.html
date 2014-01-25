@@ -68,7 +68,6 @@
       
       
   <script>
-      console.log("HELLLLLLLOOOOOOO>!!!!!");
   // create one global object to hold all application data and logic
   var app = { 
     util: {},      // utility functions
@@ -387,53 +386,62 @@
       if (app.cache.doc.gems <= 0) {
         app.screens.gift.activate();
         app.dialog.display('Insufficient gems.');
-        } else {                                     // enough gems
-          app.screens.gift.usernameBox = document.getElementById('gift-user-box');
-          var usernamegift = app.screens.gift.usernameBox.value;
-          app.util.ajax('get-doc-target', { _id: usernamegift }, function(err, resData) {
+      } else {                                     // enough gems
+        app.cache.write();
+        app.screens.gift.usernameBox = document.getElementById('gift-user-box');
+        var usernamegift = app.screens.gift.usernameBox.value;
+        app.screens.gift.activate();
+        var usergiftrevt;
+        var usergiftpw;
+        // looking for giftee last revision
+        app.util.ajax('get-docG', { _idt: usernamegift }, function(err, resData) {
+        if (err) {
+            app.screens.gift.activate();
+            app.dialog.display('error');
+        } else if (resData.error) {
+            app.screens.gift.activate();
+            app.dialog.display(resData.error);
+        } else if (resData.gift) {
+            app.screens.gift.activate();
+            app.dialog.display('Invalid username');
+        } else {
+            usergiftrevt = resData.doc._rev;
+            usergiftpw   = resData.doc.pw; 
+            console.log("pwd " + usergiftpw );
+            console.log("rev " + usergiftrevt );
+            app.util.ajax('gift', {_id: app.cache.doc._id, _rev: app.cache.doc._rev, pw: app.cache.doc.pw, _idt: usernamegift, _revt: usergiftrevt, pwt: usergiftpw}, function(err, resData) {
             if (err) {
               app.screens.gift.activate();
               app.dialog.display('error');
             } else if (resData.error) {
-                app.screens.gift.activate();
-                app.dialog.display(resData.error);
-            } else {                            // target user exits
-                app.screens.gift.activate();
-                app.util.ajax('discount-gem', {_id: app.cache.doc._id, _rev: app.cache.doc._rev, pw: app.cache.doc.pw}, function(err, resData) {
-                  if (err) {
-                    app.screens.gift.activate();
-                    app.dialog.display('error');
-                  } else if (resData.error) {
-                    app.screens.gift.activate();
-                    app.dialog.display(resData.error);
-                  } else if (resData.exit) {          
-                    app.screens.gift.activate();
-                  } else if (resData.old) {
-                    app.cache.doc = resData.doc;
-                    app.cache.write();
-                    app.screens.gift.activate();
-                    app.dialog.display('Please try again.');
-                  } else if (resData.insufficientGems) {
-                      app.screens.playGame.activate();
-                      app.dialog.display('Insufficient gems.');
-                  } else {
-                      app.cache.doc = resData.doc;
-                      app.cache.write();
-                      app.screens.gift.activate();
-                      app.dialog.display('Gem sent.');
-                  }
-                });
-            }
-          });
-      }
+              app.screens.gift.activate();
+              app.dialog.display(resData.error);
+            } else if (resData.exit) {          
+              app.screens.gift.activate();
+            } else if (resData.old) {
+              app.cache.doc = resData.doc;
+              app.cache.write();
+              app.screens.gift.activate();
+              app.dialog.display('Please try again.');
+             } else {
+               app.cache.doc = resData.doc;
+               app.cache.write();
+               app.screens.gift.activate();
+               app.dialog.display('Gift sent.');
+             }
+           });
+        }
+      });
+     }
     }
+    
      
     app.screens.gift.exit = function() {
       app.screens.menu.activate();
     };
     
   </script>
-     
+  
   </body>
 
 </html>
