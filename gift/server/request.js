@@ -4,6 +4,7 @@ var db          = require('./db');
 var reply       = require('./response').reply;
 var replyError  = require('./response').replyError;
 var replyLogin  = require('./response').replyLogin;
+var replyNotFound  = require('./response').replyNotFound;
 
 // This function extracts a JSON-encoded object from the request message.
 // If number of bytes received exceeds maxBytes or any other problem occurs,
@@ -88,14 +89,14 @@ exports.checkPassword = function(userId, password, res, cb) {
   });
 };
 
-// Retrieve user doc; verify that target user exists.
+// Retrieve user doc; verify giftee user exists.
 exports.getTargetData = function(userId, res, cb) {
   db.getDoc(userId, function(err, doc) {
     if (err) {
       console.log(err.message);
       replyError(res);
     } else if (doc === null) {
-      replyLogin(res);
+      return reply(res, { 'userNotFound': true });
     } else {
       cb(doc);
     }
