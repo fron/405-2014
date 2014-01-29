@@ -1,0 +1,1 @@
+psql -U postgres -h localhost -d gift -f gift.sql
