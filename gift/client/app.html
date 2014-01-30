@@ -349,13 +349,13 @@
     app.screens.gift.onload = function() {
       app.screens.gift.gemsText = document.getElementById('gift-gems-text');
       app.screens.gift.usernameBox = document.getElementById('gift-user-box');
+      app.screens.gift.usernameBox = document.getElementById('gift-user-box');
       document.getElementById('gift-send-gem-btn').onclick = app.screens.gift.sendGift;
       document.getElementById('gift-exit-btn').onclick = app.screens.gift.exit;
     }
 
     app.screens.gift.activate = function() {
       app.screens.gift.gemsText.innerHTML = app.cache.doc.gems;
-      app.screens.gift.usernameBox = document.getElementById('gift-user-box');
       app.screens.gift.show();
     };
 
@@ -367,26 +367,26 @@
          //   console.log("ERR " + err);
           app.screens.gift.activate();
           app.dialog.display('error');
-          } else if (resData.error) {
+        } else if (resData.error) {
           app.screens.gift.activate();
           app.dialog.display(resData.error);
-          } else if (resData.old) {
+        } else if (resData.old) {
           app.cache.doc = resData.doc;
           app.cache.write();
           app.screens.gift.activate();
           app.dialog.display('Please try again.');
-          } else if (resData.insufficientGems) {
+        } else if (resData.insufficientGems) {
           app.screens.gift.activate();
           app.dialog.display('Insufficient gems.');
-          } else if (resData.userNotFound) {
+        } else if (resData.userNotFound) {
           app.screens.gift.activate();
           app.dialog.display('User not Found.');
-          } else {
+        } else {
           app.cache.doc = resData.doc;
           app.cache.write();
           app.screens.gift.activate();
           app.dialog.display('Gift sent.');
-          }
+        }
       });
     }
      
