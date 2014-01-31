@@ -1,8 +1,8 @@
 var pg          = require('pg');
 var url = process.env.DATABASE_URL;
-if (url === undefined) url = 'postgres://localhost/gift';
+if (url === undefined) url = 'postgres://postgres@localhost/gift';
 
-var url = 'postgres://postgres@localhost/gift';
+//var url = 'postgres://postgres@localhost/gift';
 
 exports.init = function(cb) {
   pg.connect(url, function(err, client, done) {
