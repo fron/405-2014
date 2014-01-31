@@ -9,7 +9,7 @@ function imgood() {
 }
 
 function imbad() {
-    throw new Error('I\'m bad.');
+  throw new Error('I\'m bad.');
 }
 
 imgood();

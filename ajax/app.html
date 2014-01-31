@@ -7,33 +7,33 @@
 
 <html>
   <head> 
-     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
-     <title>Francisco Ron - Photography</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+    <title>Francisco Ron - Photography</title> 
   </head>
   
   <body>
-     <header>
-         <p class="head1">
-             Francisco Ron - Photography
-         </p>
-      </header>
-      <div>
-          <img src="./image.png"/> 
-      </div>
+    <header>
+      <p class="head1">
+        Francisco Ron - Photography
+      </p>
+    </header>
+    
+    <div>
+      <img src="./image.png"/> 
+     </div>
       
       <div>
-          <span id="ajaxButton" style="cursor: pointer; text-decoration: underline">
-          Make a request
-          </span>
+       <span id="ajaxButton" style="cursor: pointer; text-decoration: underline">
+         Make a request
+        </span>
       </div>    
 
-      <script type="text/javascript"> 
-	      
-		  (function() {                // anonymous function
-              var httpRequest;
-              document.getElementById("ajaxButton").onclick = function() { makeRequest('message.js'); };
+  <script type="text/javascript"> 
+    (function() {                // anonymous function
+      var httpRequest;
+      document.getElementById("ajaxButton").onclick = function() { makeRequest('message.js'); };
 
-              function makeRequest(url) {
+      function makeRequest(url) {
               if (window.XMLHttpRequest) { // Mozilla, Safari, ...
                   httpRequest = new XMLHttpRequest();
               } else if (window.ActiveXObject) { // IE

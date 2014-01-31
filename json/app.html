@@ -49,7 +49,7 @@
                   return false;
               }
           
-		      httpRequest.onreadystatechange = alertContents;
+              httpRequest.onreadystatechange = alertContents;
               httpRequest.open('GET', url);
               httpRequest.send();
               }
@@ -58,9 +58,9 @@
                   if (httpRequest.readyState === 4) {
                       if (httpRequest.status === 200) {
                           var resDataString = httpRequest.responseText;
-						  var resData = JSON.parse(resDataString);
-						  var msg = resData.msg;
-						  alert(msg);
+                          var resData = JSON.parse(resDataString);
+                          var msg = resData.msg;
+                          alert(msg);
                       } else {
                            alert('There was a problem with the request.');
                         }

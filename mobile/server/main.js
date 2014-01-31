@@ -2,10 +2,9 @@ var http             = require('http');
 var domain           = require('domain');
 var client           = require('./client');
 var get_doc          = require('./get_doc');
-var get_docG          = require('./get_docG');
 var buy_gem          = require('./buy_gem');
 var consume_gem      = require('./consume_gem');
-var message          = require('./gift');
+var send_gift        = require('./send_gift');
 var replyNotFound    = require('./response').replyNotFound;
 var replyError       = require('./response').replyError;
 
@@ -21,8 +20,8 @@ function handleRequest(req, res) {
     buy_gem.handle(req, res);
   } else if (req.url === '/consume-gem') {
     consume_gem.handle(req, res);
-  } else if (req.url === '/gift') {
-    message.handle(req, res);
+  } else if (req.url === '/send-gift') {
+    send_gift.handle(req, res);
   } else {
     replyNotFound(res);
   }

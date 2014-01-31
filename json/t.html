@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+<title>curl and libcurl</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<link rel="STYLESHEET" type="text/css" href="http://curl.haxx.se/curl.css">
+<link rel="shortcut icon" href="http://curl.haxx.se/favicon.ico">
+<meta name="description" content="curl is a command line tool for transferring data with URL syntax, supporting DICT, FILE, FTP, FTPS, Gopher, HTTP, HTTPS, IMAP, IMAPS, LDAP, LDAPS, POP3, POP3S, RTMP, RTSP, SCP, SFTP, SMTP, SMTPS, Telnet and TFTP. curl supports HTTPS certificates, HTTP POST, HTTP PUT, FTP uploading, kerberos, HTTP form based upload, proxies, cookies, user+password authentication, file transfer resume, http proxy tunneling and a busload of other useful tricks">
+</head>
+<BODY bgcolor="#ffffff" text="#000000" LINK="#0000ff" VLINK="#808080" ALINK="red">
+<table cellspacing="0" cellpadding="5"><tr><td valign="top" align="left">
+<a href="/"><img border="0" src="http://curl.haxx.se/ds-curlicon.png" width="99" height="37" alt="cURL"></a>
+<div class="mainmenu">
+<div class="itemselect">Front Page</div>
+<div><a href="http://curl.haxx.se/download.html" class="menuitem" title="Get curl packages">Download</a></div>
+<div><a href="http://curl.haxx.se/changes.html" class="menuitem" title="The changes done in releases">Changelog</a></div>
+<div><a href="http://curl.haxx.se/docs/" class="menuitem" title="curl documentation">Docs &raquo;</a></div>
+<div><a href="http://curl.haxx.se/mail/" class="menuitem" title="Mailing List info and archives">Mailing Lists</a></div>
+<div><a href="http://curl.haxx.se/dev/" class="menuitem" title="Resources for development and developers">Development &raquo;</a></div>
+<div><a href="http://curl.haxx.se/libcurl/" class="menuitem" title="libcurl web site section">libcurl &raquo;</a></div>
+<div><a href="http://curl.haxx.se/search.html" class="menuitem" title="Search the curl web site">Search</a></div>
+</div>
+<p>
+<p>
+<a href="http://sourceforge.net/projects/curl/"><img src="http://sourceforge.net/sflogo.php?group_id=976&amp;type=8" width="80" height="15" border="0" alt="curl's project page on SourceForge.net"></a>
+<p>
+ <a href="http://curl.haxx.se/sponsors.html">Sponsors</a>:<br>
+<a href="http://www.haxx.se/">Haxx</a>
+</td><td valign="top" align="left" width="100%">
+<center><img src="http://curl.haxx.se/pix/curl-refined.jpg" width="471" height="175" alt="cURL">
+</center>
+<h1 class="pagetitle"> curl groks URLs </h1>
+<p class="ingres">
+  curl is a command line tool for transferring data with URL syntax,
+  supporting DICT, FILE, FTP, FTPS, Gopher, HTTP, HTTPS, IMAP, IMAPS, LDAP,
+  LDAPS, POP3, POP3S, RTMP, RTSP, SCP, SFTP, SMTP, SMTPS, Telnet and
+  TFTP. curl supports SSL certificates, HTTP POST, HTTP PUT, FTP uploading,
+  HTTP form based upload, proxies, cookies, user+password authentication
+  (Basic, Digest, NTLM, Negotiate, kerberos...), file transfer resume, proxy
+  tunneling and a busload of other <a href="docs/features.html">useful
+  tricks</a>.
+</p>
+<center><big><strong>
+ Possibly more than <a href="http://daniel.haxx.se/blog/2012/05/16/300m-users/">500 million users</a> already, I'm sure you can use it as well!
+</strong></big></center>
+<table><tr valign="top"><td width="60%">
+<p>
+  curl is free and <a href="docs/copyright.html" title="curl and libcurl are licensed under a MIT/X derivate license">open software</a> that compiles and
+  runs under a wide variety of operating systems. curl exists thanks to
+  efforts from <a href="docs/thanks.html" title="More than 1000 named contributors">many contributors</a>.
+<p>
+  <b>The most recent stable version of curl is version 7.34.0</b>, released
+  on 17th of December 2013.  Currently, 80 of the <a href="download.html" title="We have a very extensive download page!">listed archives</a> are of the latest
+  version.  </td><td>
+<p>
+  Use the curl <a href="/docs/manpage.html" title="man page for curl">command
+  line tool</a> or use <a href="libcurl/" title="bindings for everyone!">libcurl</a> from within your own programs.
+<p>
+ Found a bug or a flaw? <a href="/docs/bugs.html">Report a bug!</a>
+</td></tr></table>
+<div class="news">
+ <div class="newstitle">curl and libcurl 7.34.0
+ <span style="float: right">December 17 2013</span></div>
+ <p>
+  The curl team proudly presents <a href="download.html">curl and libcurl
+  7.34.0</a>. Read up on all the changes and bug fixes on the <a
+  href="changes.html#7_34_0">changes</a> page.
+<p>
+  Extra attention should be put on the <a href="docs/adv_20131217.html">
+  security advisory</a> we announce today.
+ </p>
+ <div class="newstitle">SECURITY ADVISORY: libcurl cert name check ignore
+ <span style="float: right">November 15 2013</span></div>
+ <p>
+  libcurl is vulnerable to a case of missing out the checking of the
+  certificate CN or SAN name field when the digital signature verification is
+  turned off.
+  Read the full <a href="/docs/adv_20131115.html">Project cURL Security
+  Advisory</a> for CVE-2013-4545.
+ </p>
+</div>
+<p align="right">
+ <small><a href="news.html">more news</a></small>
+<p>
+<table align="center" class="latestmail" cellpadding="2" cellspacing="0"
+ summary="lists several recent curl mailing list postings">
+<caption>Recent discussions on the mailing lists</caption>
+<tr class="tabletop">
+<th>Subject</th>
+<th>GMT</th>
+<th>Author</th>
+<th>Thread</th>
+<th>List</th>
+</tr>
+<tr class="even"><td><a title="curl_callback" href="http://curl.haxx.se/mail/archive-2013-12/0057.html">curl_callback</a></td>
+<td>Monday 07:27</td><td>karan tandel</td><td>1</td><td><a href="http://curl.haxx.se/mail/list.cgi?list=curl-users">curl-users</a></td></tr>
+<tr class="odd"><td><a title="Windows build failures!" href="http://curl.haxx.se/mail/lib-2013-12/0138.html">Windows build failures!</a></td>
+<td>Sunday 23:09</td><td>Steve Holme</td><td>4 <a href="http://curl.haxx.se/mail/lib-2013-12/0132.html">first</a></td><td><a href="http://curl.haxx.se/mail/list.cgi?list=curl-library">libcurl</a></td></tr>
+<tr class="even"><td><a title="getpeername() error using tftp with curl-7.28.1" href="http://curl.haxx.se/mail/archive-2013-12/0056.html">getpeername() error using tftp with curl...</a></td>
+<td>Sunday 22:31</td><td>Daniel Stenberg</td><td>2 <a href="http://curl.haxx.se/mail/archive-2013-11/0081.html">first</a></td><td><a href="http://curl.haxx.se/mail/list.cgi?list=curl-users">curl-users</a></td></tr>
+<tr class="odd"><td><a title="Reg: FTP file Upload, default and binary mode" href="http://curl.haxx.se/mail/lib-2013-12/0136.html">Reg: FTP file Upload, default and binary...</a></td>
+<td>Sunday 20:54</td><td>Daniel Stenberg</td><td>4 <a href="http://curl.haxx.se/mail/lib-2013-12/0125.html">first</a></td><td><a href="http://curl.haxx.se/mail/list.cgi?list=curl-library">libcurl</a></td></tr>
+<tr class="even"><td><a title="PHP/cURL: intensive calls send exception without caching connection resource" href="http://curl.haxx.se/mail/lib-2013-12/0135.html">PHP/cURL: intensive calls send exception...</a></td>
+<td>Sunday 20:46</td><td>Daniel Stenberg</td><td>2 <a href="http://curl.haxx.se/mail/lib-2013-12/0131.html">first</a></td><td><a href="http://curl.haxx.se/mail/list.cgi?list=curl-library">libcurl</a></td></tr>
+<tr class="odd"><td><a title="Which version of certdata.txt is preferred for mk-ca-bundle, and why?" href="http://curl.haxx.se/mail/archive-2013-12/0055.html">Which version of certdata.txt is preferr...</a></td>
+<td>Sunday 06:28</td><td>Leif W</td><td>11 <a href="http://curl.haxx.se/mail/archive-2013-12/0033.html">first</a></td><td><a href="http://curl.haxx.se/mail/list.cgi?list=curl-users">curl-users</a></td></tr>
+<tr class="even"><td><a title="[curl:bugs] #1316 Regarding NTLMv2 Authentication support in CURL" href="http://curl.haxx.se/mail/tracker-2013-12/0102.html">[curl:bugs] #1316 Regarding NTLMv2 Authe...</a></td>
+<td>Saturday 23:53</td><td>Daniel Stenberg</td><td>7 <a href="http://curl.haxx.se/mail/tracker-2013-12/0090.html">first</a></td><td><a href="http://curl.haxx.se/mail/list.cgi?list=curl-tracker">Bugs</a></td></tr>
+<tr class="odd"><td><a title="Netware build failures!" href="http://curl.haxx.se/mail/lib-2013-12/0130.html">Netware build failures!</a></td>
+<td>Saturday 22:17</td><td>Daniel Stenberg</td><td>1</td><td><a href="http://curl.haxx.se/mail/list.cgi?list=curl-library">libcurl</a></td></tr>
+<tr class="even"><td><a title="How can I get SSL server certificate info from libcurl when a handshake fails?" href="http://curl.haxx.se/mail/lib-2013-12/0129.html">How can I get SSL server certificate inf...</a></td>
+<td>Saturday 22:04</td><td>Daniel Stenberg</td><td>2 <a href="http://curl.haxx.se/mail/lib-2013-12/0119.html">first</a></td><td><a href="http://curl.haxx.se/mail/list.cgi?list=curl-library">libcurl</a></td></tr>
+<tr class="odd"><td><a title="[curl:bugs] #1315 curl-7.34.0: hangs after hitting IPv6 address with no IPv6 available" href="http://curl.haxx.se/mail/tracker-2013-12/0100.html">[curl:bugs] #1315 curl-7.34.0: hangs aft...</a></td>
+<td>Saturday 18:24</td><td>Daniel Stenberg</td><td>17 <a href="http://curl.haxx.se/mail/tracker-2013-12/0063.html">first</a></td><td><a href="http://curl.haxx.se/mail/list.cgi?list=curl-tracker">Bugs</a></td></tr>
+</table>
+</td></tr></table>
+<p>
+<a href="http://curl.haxx.se/donation.html"><img border="0" src="http://curl.haxx.se/pix/donate.png" alt="donate!"
+width="88" height="31"></a>
+<span class="aboutbox">
+Page updated December 30, 2013.<br>
+<a href="http://curl.haxx.se/about.html">web site info</a>
+</span>
+<center>
+<a class="bottomad" href="http://www.easyalgo.com/eaupload.aspx"
+title="Asp.net upload component">File upload with ASP.NET</a>
+</center>
+</BODY>
+</HTML>

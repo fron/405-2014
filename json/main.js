@@ -11,7 +11,7 @@ function replyError(res) {
         res.writeHead(500);
         res.end('Server error.');
     } 
-	catch (err) {
+        catch (err) {
         console.error('Error sending response with code 500.');
     }
 };
