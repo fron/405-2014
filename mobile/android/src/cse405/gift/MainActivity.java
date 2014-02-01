@@ -34,6 +34,6 @@ public class MainActivity extends Activity
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         webSettings.setDomStorageEnabled(true);
-        webView.loadUrl("http://66.215.201.229:5000/");
+        webView.loadUrl("http://66.215.200.132:5000/");
     }
 }

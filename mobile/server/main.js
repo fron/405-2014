@@ -14,8 +14,6 @@ function handleRequest(req, res) {
     client.handle(req, res);
   } else if (req.url === '/get-doc') {
     get_doc.handle(req, res);
-  } else if (req.url === '/get-docG') {
-    get_docG.handle(req, res);
   } else if (req.url === '/buy-gem') {
     buy_gem.handle(req, res);
   } else if (req.url === '/consume-gem') {
