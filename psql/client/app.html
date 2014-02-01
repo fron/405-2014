@@ -378,6 +378,9 @@
         } else if (resData.insufficientGems) {
           app.screens.gift.activate();
           app.dialog.display('Insufficient gems.');
+        } else if (resData.selfGift) {
+          app.screens.gift.activate();
+          app.dialog.display('Giver and giftee are the same.');
         } else if (resData.userNotFound) {
           app.screens.gift.activate();
           app.dialog.display('User not Found.');
