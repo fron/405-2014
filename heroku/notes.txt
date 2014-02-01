@@ -1,3 +1,0 @@
-to create master in windows
-
-git remote add -m, master git@heroku.com:fr405app.git
