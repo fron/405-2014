@@ -11,19 +11,8 @@ var checkPassword         = require('./request').checkPassword;
 var checkRevision         = require('./request').checkRevision;
 var replyError            = require('./response').replyError;
 
-function f(cb) {
-  //console.log("f's activity starts.");
-  var t = Math.random() * 500; // random between 0 and 5000
-  function activityFinished() {
-    console.log("Processing...");
-    if (cb) cb();
-  }
-  setTimeout(activityFinished, t);
-}  
-
-
 exports.handle = function(req, res) {
-  f(processHandle(req, res)); 
+  processHandle(req, res); 
 };
 
 
@@ -38,10 +27,10 @@ function processHandle (req, res) {
             return reply(res, { 'insufficientGems': true });
           }
           getTargetData(data._idt, res, function(userDocR) {
-            processRequestReceiver(userDocR, res);
-            processRequestGiver(userDocG, res);
-          });
-        });
+            processRequestReceiver(userDocR, res)});{ 
+              processRequestGiver(userDocG, res);
+            }
+         });
       });
     });
   });
@@ -55,20 +44,20 @@ function processRequestGiver(userDocG, res) {
       replyError(res);
     } else if (result.error) {
         if (result.error === 'conflict') {
-          console.log("conflict on giver");  
-          processConflict(userDoc, res);
+        console.log("conflict on giver");  
+        processConflict(userDoc, res);
         } else {
-          console.log(result.err);
-          replyError(res);
-        }
-      } else if (result.rev) {
-        userDocG._rev = result.rev;
-        reply(res, { doc: userDocG });
-        console.log("Receiver updated");
-      } else {
-        console.log('unexpected error');
+        console.log(result.err);
         replyError(res);
-      }
+        }
+    } else if (result.rev) {
+      userDocG._rev = result.rev;
+      reply(res, { doc: userDocG });
+      console.log("Receiver updated");
+    } else {
+      console.log('unexpected error');
+      replyError(res);
+    }
   });
 };
 
