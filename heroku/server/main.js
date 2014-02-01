@@ -42,7 +42,7 @@ server.on('request', function(req, res) {
 });
 
 client.init(function() {
-  server.listen(port );
+  server.listen(port);
   console.log('Server started.');
 });
 
