@@ -26,6 +26,12 @@ function processHandle (req, res) {
           if (userDocG.gems <= 0) {
             return reply(res, { 'insufficientGems': true });
           }
+          if (data._id === data._idt) {
+            return reply(res, { 'selfGift': true });
+          }
+          console.log(data._id);
+          console.log(data._idt);
+          
           getTargetData(data._idt, res, function(userDocR) {
             processRequestReceiver(userDocR, res)});{ 
               processRequestGiver(userDocG, res);
@@ -43,13 +49,13 @@ function processRequestGiver(userDocG, res) {
       console.log(err.message);
       replyError(res);
     } else if (result.error) {
-        if (result.error === 'conflict') {
+      if (result.error === 'conflict') {
         console.log("conflict on giver");  
         processConflict(userDoc, res);
-        } else {
+      } else {
         console.log(result.err);
         replyError(res);
-        }
+      }
     } else if (result.rev) {
       userDocG._rev = result.rev;
       reply(res, { doc: userDocG });
@@ -70,7 +76,7 @@ function processRequestReceiver(userDocR, res) {
       console.log(err.message);
       replyError(res);
     } else if (result.error) {
-        if (result.error === 'conflict') {
+      if (result.error === 'conflict') {
         console.log("conflict on receiver");  
         processConflict(userDoc, res);
       } else {
