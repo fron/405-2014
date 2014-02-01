@@ -29,14 +29,12 @@ function processHandle (req, res) {
           if (data._id === data._idt) {
             return reply(res, { 'selfGift': true });
           }
-          console.log(data._id);
-          console.log(data._idt);
-          
           getTargetData(data._idt, res, function(userDocR) {
-            processRequestReceiver(userDocR, res)});{ 
+            processRequestReceiver(userDocR, res); { 
               processRequestGiver(userDocG, res);
             }
-         });
+          });
+        });
       });
     });
   });
@@ -59,7 +57,7 @@ function processRequestGiver(userDocG, res) {
     } else if (result.rev) {
       userDocG._rev = result.rev;
       reply(res, { doc: userDocG });
-      console.log("Receiver updated");
+      console.log("Giver updated");
     } else {
       console.log('unexpected error');
       replyError(res);
