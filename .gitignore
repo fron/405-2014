@@ -1,0 +1,5 @@
+.DS_Store
+/mobile/android/gen
+/mobile/android/bin
+/mobile/android/cse405.keystore
+/mobile/android/local.properties
